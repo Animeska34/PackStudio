@@ -18,6 +18,7 @@ Visual packing tool using [pack](https://github.com/cfnptr/pack) library.
 * Audio transcoding
 * Video  transcoding
 * Default Asset import settings
+* Asset caching
 
 ## Project requirements
 * [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
