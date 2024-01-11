@@ -1,0 +1,121 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PackStudio.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:PackStudio.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PackStudio.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Pack Studio"
+		TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+		ExtendClientAreaToDecorationsHint="False"
+		x:CompileBindings="True"
+		x:DataType="vm:MainViewModel"
+		MinHeight="300"
+		MinWidth="750"
+		>
+	<!--<views:MainView /> -->
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainViewModel />
+	</Design.DataContext>
+	<Panel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="0.5"
+					MaterialOpacity="0.65" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+
+		<DockPanel Margin="0 0 0 0">
+			<Menu DockPanel.Dock="Top" Width="">
+				<MenuItem Header="File" >
+					<MenuItem Header="Open" Command="{Binding OpenCommand}"/>
+					<MenuItem Header="Save"/>
+					<MenuItem Header="Save as"/>
+					<Separator/>
+					<MenuItem Header="Exit"/>
+				</MenuItem>
+				<MenuItem Header="Edit">
+					<MenuItem Header="Copy"/>
+					<MenuItem Header="Paste"/>
+					<MenuItem Header="Rename"/>
+					<MenuItem Header="Re-index"/>
+				</MenuItem>
+				<MenuItem Header="Build">
+					<MenuItem Header="Build project" Command="{Binding BuildAll}"></MenuItem>
+					<MenuItem Header="Build current" Command="{Binding BuildCurrent}"></MenuItem>
+				</MenuItem>
+				<MenuItem Header="Help">
+					<MenuItem Header="Help"/>
+					<MenuItem Header="About"/>
+				</MenuItem>
+			</Menu>
+
+			<Panel DockPanel.Dock="Bottom"  Height="20">
+				<TextBlock Text="Status bar"></TextBlock>
+			</Panel>
+
+			<DockPanel DockPanel.Dock="Right" Width="250" >
+				<Panel DockPanel.Dock="Top" Name="Inspector">
+
+					<TextBlock Text="Inspector" Height="20" VerticalAlignment="Top" Margin="5 0 0 0">
+
+					</TextBlock>
+				</Panel>
+				<Panel DockPanel.Dock="Bottom" Height="300">
+
+				</Panel>
+			</DockPanel>
+
+			<DockPanel DockPanel.Dock="Left"  Width="250" >
+				<TextBlock DockPanel.Dock="Top" Text="Project"  Height="20" VerticalAlignment="Top" Margin="5 0 0 0"/>
+				<ScrollViewer DockPanel.Dock="Bottom">
+					<TreeView Name="Packages"
+									ItemsSource="{Binding Packages}"
+									SelectedItem="{Binding SelectedPackages}"
+									SelectionMode="Single"
+								  >
+						<TreeView.ItemTemplate>
+							<TreeDataTemplate>
+								<Panel>
+									<CheckBox IsEnabled="{Binding enabled}"  IsChecked="{Binding selected}"/>
+									<TextBlock Margin="30 0 0 0" Text="{Binding title}" VerticalAlignment="Center"/>
+								</Panel>
+							</TreeDataTemplate>
+						</TreeView.ItemTemplate>
+					</TreeView>
+				</ScrollViewer>
+			</DockPanel>
+
+			<Border BorderThickness="1 0 1 0" BorderBrush="Black">
+				<Panel>
+					<TextBlock Text="Assets" Height="20" VerticalAlignment="Top" Margin="5 0 0 0"></TextBlock>
+					<ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0 20 0 0">
+						<TreeView Name="PackView"
+									ItemsSource="{Binding Hierarchy}"
+									SelectedItem="{Binding SelectedFiles}"
+									SelectionMode="Multiple"
+								  >
+							<TreeView.ItemTemplate>
+								<TreeDataTemplate ItemsSource="{Binding SubNodes}" >
+									<Panel>
+										<CheckBox IsEnabled="{Binding enabled}"  IsChecked="{Binding selected}"/>
+										<TextBlock Margin="30 0 0 0" Text="{Binding title}" VerticalAlignment="Center"/>
+									</Panel>
+								</TreeDataTemplate>
+							</TreeView.ItemTemplate>
+						</TreeView>
+					</ScrollViewer>
+				</Panel>
+			</Border>
+		</DockPanel>
+	</Panel>
+
+</Window>
