@@ -20,5 +20,6 @@ Visual packing tool using [pack](https://github.com/cfnptr/pack) library.
 * Default Asset import settings
 
 ## Project requirements
-* Visual Studio 2022
+* [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 * [Avalonia UI Extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS)
+* Put `pack.dll` to debug build folder _(Required to pack and unpack files)_
