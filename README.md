@@ -23,3 +23,7 @@ Visual packing tool using [pack](https://github.com/cfnptr/pack) library.
 * [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 * [Avalonia UI Extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS)
 * Put `pack.dll` to debug build folder _(Required to pack and unpack files)_
+
+## Third Party
+* [Pack](https://github.com/cfnptr/pack) (Apache 2.0)
+* [Avalonia UI](https://github.com/AvaloniaUI/Avalonia/) (MIT)
