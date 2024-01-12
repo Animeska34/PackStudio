@@ -20,10 +20,15 @@ Visual packing tool using [pack](https://github.com/cfnptr/pack) library.
 * Default Asset import settings
 * Asset caching
 
-## Project requirements
+## Project Requirements (Visual Studio)
 * [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 * [Avalonia UI Extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS)
 * Put `pack.dll` to debug build folder _(Required to pack and unpack files)_
+
+## Build Requirements
+* Install [.NET SDK](https://dotnet.microsoft.com/en-us/download)
+* Run `dotnet build -c Release`
+* Copy `pack.dll` (`pack.dylib` on MacOS or `pack.so` on Linux) to build output  directory
 
 ## Third Party
 * [Pack](https://github.com/cfnptr/pack) (Apache 2.0)
