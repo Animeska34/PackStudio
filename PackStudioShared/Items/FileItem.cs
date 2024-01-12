@@ -1,7 +1,4 @@
-﻿
-using PackStudio.ViewModels;
-
-using System.IO;
+﻿using System.IO;
 
 
 namespace PackStudio.Items

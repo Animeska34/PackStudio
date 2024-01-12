@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:PackStudio.ViewModels"
+		xmlns:s="using:PackStudio.Styles"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:PackStudio.Views"
@@ -8,6 +9,7 @@
         x:Class="PackStudio.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Pack Studio"
+		TransparencyBackgroundFallback="Gray"
 		TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
 		ExtendClientAreaToDecorationsHint="False"
@@ -28,14 +30,13 @@
 				<ExperimentalAcrylicMaterial
 					BackgroundSource="Digger"
 					TintColor="Black"
-					TintOpacity="0.5"
-					MaterialOpacity="0.65" />
+					TintOpacity="1"
+					MaterialOpacity="0.1" />
 			</ExperimentalAcrylicBorder.Material>
 		</ExperimentalAcrylicBorder>
-
 		<DockPanel Margin="0 0 0 0">
-			<Menu DockPanel.Dock="Top" Width="">
-				<MenuItem Header="File" >
+			<Menu DockPanel.Dock="Top">
+				<MenuItem Header="File">
 					<MenuItem Header="Open" Command="{Binding OpenCommand}"/>
 					<MenuItem Header="Save"/>
 					<MenuItem Header="Save as"/>
@@ -53,7 +54,7 @@
 					<MenuItem Header="Build current" Command="{Binding BuildCurrent}"></MenuItem>
 				</MenuItem>
 				<MenuItem Header="Help">
-					<MenuItem Header="Help"/>
+					<MenuItem Header="Help" Command="{Binding Help}"/>
 					<MenuItem Header="About"/>
 				</MenuItem>
 			</Menu>

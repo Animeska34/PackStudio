@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using System.Collections.Generic;
 
 namespace PackStudio.Views
 {
@@ -7,7 +6,7 @@ namespace PackStudio.Views
     {
         public PreviewWindow() : base()
         {
-            
+
             InitializeComponent();
         }
     }

@@ -1,6 +1,4 @@
-﻿using DynamicData;
-using PackStudio.ViewModels;
-using System.Diagnostics;
+﻿using PackStudio.ViewModels;
 
 
 namespace PackStudio.Items

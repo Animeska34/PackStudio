@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace PackStudio.Items
 {
@@ -13,7 +8,7 @@ namespace PackStudio.Items
 
         public PackageItem(string path)
         {
-            DirectoryInfo dir = new DirectoryInfo(path);
+            DirectoryInfo dir = new(path);
             name = dir.Name;
             this.path = dir.FullName;
         }

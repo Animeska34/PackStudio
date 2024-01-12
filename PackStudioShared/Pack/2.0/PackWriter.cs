@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Pack.V2
@@ -35,7 +34,7 @@ namespace Pack.V2
             return res;
         }
         */
-        
+
         [DllImport(Common.LibraryPath, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)] private static extern PackResult packFiles(string packPath, ulong fileCount, string[] filePaths, float zipThreshold, bool printProgress, OnPackFile callback, object ret);
 
         public delegate void OnPackFile(UInt64 index, object o);

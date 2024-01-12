@@ -1,9 +1,6 @@
 using Avalonia.Controls;
-using Avalonia.Media;
-using PackStudio.ViewModels;
 using PackStudio.Operations;
-using System.Diagnostics;
-using System.Threading.Tasks;
+using PackStudio.ViewModels;
 
 namespace PackStudio.Views
 {
@@ -22,7 +19,7 @@ namespace PackStudio.Views
             operation.Setup(window);
         }
 
-        
+
         public LoadingOperation()
         {
             InitializeComponent();

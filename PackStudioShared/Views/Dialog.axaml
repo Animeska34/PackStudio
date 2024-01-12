@@ -13,7 +13,9 @@
         x:Class="PackStudio.Views.Dialog"
 		x:DataType="vm:DialogViewModel"
         Title="{Binding Title}"
-		Background="Transparent"
+		
+		TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
 		>
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
@@ -21,19 +23,21 @@
 		<vm:DialogViewModel />
 	</Design.DataContext>
 	<Panel>
-	<ExperimentalAcrylicBorder IsHitTestVisible="False">
-		<ExperimentalAcrylicBorder.Material>
-			<ExperimentalAcrylicMaterial
-				BackgroundSource="Digger"
-				TintColor="Black"
-				TintOpacity="0.5"
-				MaterialOpacity="0.65" />
-		</ExperimentalAcrylicBorder.Material>
-	</ExperimentalAcrylicBorder>
-
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.1" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
 		<DockPanel>
+			
 			<Panel DockPanel.Dock="Bottom" Height="30">
+				<!--
 				<Button Content="Confirm" />
+				-->
 			</Panel>
 			<TextBlock DockPanel.Dock="Top" Text="{Binding Message}">
 			</TextBlock>

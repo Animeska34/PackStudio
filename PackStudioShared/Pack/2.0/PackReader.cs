@@ -1,14 +1,11 @@
 using System;
-using System.Text;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Reflection;
 
 namespace Pack.V2
 {
     public class PackReader
     {
-        const CallingConvention conversion  = CallingConvention.Cdecl;
+        const CallingConvention conversion = CallingConvention.Cdecl;
         [DllImport(Common.LibraryPath, CallingConvention = conversion)] protected static extern byte createFilePackReader(string filePath, bool isResourcesDirectory, uint threadCount, ref IntPtr packReader);
         [DllImport(Common.LibraryPath, CallingConvention = conversion)] protected static extern void destroyPackReader(IntPtr packReader);
         [DllImport(Common.LibraryPath, CallingConvention = conversion)] protected static extern ulong getPackItemCount(IntPtr packReader);
@@ -109,7 +106,7 @@ public PackResult ReadItemData(ulong index, ref byte[] data, uint threadIndex = 
         public byte[]? ReadItemData(string path, uint thread = 0)
         {
             ulong index = 0;
-            if(getPackItemIndex(Handle, path, ref index))
+            if (getPackItemIndex(Handle, path, ref index))
             {
                 uint size = getPackItemDataSize(Handle, index);
                 byte[] data = new byte[size];

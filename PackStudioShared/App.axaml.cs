@@ -2,21 +2,17 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Pack.V2;
 using PackStudio.ViewModels;
 using PackStudio.Views;
-using PackStudio.Items;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 
 namespace PackStudio;
 
 public partial class App : Application
 {
 
-    public static Window? main {  get; private set; }
+    public static Window? main { get; private set; }
 
     public static void Preview(string path)
     {
@@ -32,7 +28,7 @@ public partial class App : Application
         };
 
         if (main != null)
-           pv.ShowDialog(main);
+            pv.ShowDialog(main);
         else
             pv.Show();
     }
@@ -45,11 +41,12 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         var args = Environment.GetCommandLineArgs();
-        if(args.Length == 2)
+        if (args.Length == 2)
         {
             var arg = args[1];
 
-            if (File.Exists(arg)) {
+            if (File.Exists(arg))
+            {
                 var ext = Path.GetExtension(arg);
                 if (ext == ".pack" || ext == ".package" || ext == ".pak" || ext == ".pack2")
                 {

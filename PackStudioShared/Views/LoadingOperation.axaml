@@ -10,8 +10,9 @@
 		CanResize="False"
 		WindowStartupLocation="CenterOwner"
         x:Class="PackStudio.Views.LoadingOperation"
-
-		Background="Transparent"
+		TransparencyBackgroundFallback="Gray"
+		TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
 		ExtendClientAreaToDecorationsHint="False"
 		x:DataType="vm:LoadingOperationViewModel"
 		Title="{Binding Title}"
@@ -29,8 +30,8 @@
 				<ExperimentalAcrylicMaterial
 					BackgroundSource="Digger"
 					TintColor="Black"
-					TintOpacity="0.5"
-					MaterialOpacity="0.65" />
+					TintOpacity="1"
+					MaterialOpacity="0.1" />
 			</ExperimentalAcrylicBorder.Material>
 		</ExperimentalAcrylicBorder>
 		

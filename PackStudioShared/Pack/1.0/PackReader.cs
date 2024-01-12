@@ -1,11 +1,11 @@
 using System;
-using System.Text;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Pack.V1
 {
     public class PackReader
-    {        
+    {
         [DllImport(Common.LibraryPath)] protected static extern PackResult createPackReader(string filePath, ref IntPtr packReader);
         [DllImport(Common.LibraryPath)] protected static extern void destroyPackReader(IntPtr packReader);
         [DllImport(Common.LibraryPath)] protected static extern ulong getPackItemCount(IntPtr packReader);
@@ -56,7 +56,7 @@ namespace Pack.V1
                 throw new ArgumentOutOfRangeException(nameof(index));
             return getPackItemPath(Handle, index);
         }
-        
+
         public PackResult ReadItemData(ulong index, ref IntPtr data, ref uint size)
         {
             if (index >= ItemCount)
@@ -84,7 +84,7 @@ namespace Pack.V1
 
             if (size > int.MaxValue)
                 throw new ApplicationException("Unsupported item data size");
-            
+
             data = new byte[size];
             Marshal.Copy(buffer, data, 0, (int)size);
             return PackResult.Success;
@@ -120,14 +120,14 @@ namespace Pack.V1
         }
         public PackResult ReadItemData(string path, ref string data)
         {
-             byte[] buffer = null;
-             var result = ReadItemData(path, ref buffer);
+            byte[] buffer = null;
+            var result = ReadItemData(path, ref buffer);
 
-             if (result != PackResult.Success)
-                 return result;
+            if (result != PackResult.Success)
+                return result;
 
-             data = Encoding.UTF8.GetString(buffer);
-             return PackResult.Success;
+            data = Encoding.UTF8.GetString(buffer);
+            return PackResult.Success;
         }
 
         public void FreeBuffers()

@@ -15,7 +15,9 @@ namespace PackStudio.Items
         public bool? m_selected = true;
 
         public bool enabled { get; protected set; } = true;
-        public virtual bool? selected { get => m_selected; 
+        public virtual bool? selected
+        {
+            get => m_selected;
             set
             {
                 m_selected = value;
@@ -36,7 +38,7 @@ namespace PackStudio.Items
         }
         protected virtual void SetSilent(bool value)
         {
-            m_selected = value; 
+            m_selected = value;
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

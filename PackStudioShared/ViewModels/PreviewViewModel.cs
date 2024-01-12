@@ -1,10 +1,9 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Platform.Storage;
-using Avalonia.Styling;
 using Pack.V2;
 using PackStudio.Items;
-using PackStudio.Views;
 using PackStudio.Operations;
+using PackStudio.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ namespace PackStudio.ViewModels
             {
                 if (node is DirectoryItem dir)
                     dir.Update();
-                
+
             }
         }
 
@@ -60,7 +59,7 @@ namespace PackStudio.ViewModels
             ExtractSelected(dir.Path.AbsolutePath);
         });
 
-       
+
         private void ExtractSelected(string destination)
         {
             ExtractOperation op = new(selectedFiles, path, destination);
@@ -71,7 +70,7 @@ namespace PackStudio.ViewModels
 
         public string Title { get; set; } = "Package Preview";
 
-        public PreviewViewModel() {}
+        public PreviewViewModel() { }
         public PreviewViewModel(string path)
         {
             this.path = path;
@@ -90,7 +89,7 @@ namespace PackStudio.ViewModels
                     {
                         var item = reader.GetItemPath(i);
                         var folders = item.Split('/', '\\');
-                        
+
                         ObservableCollection<BaseItem> currentNode = Nodes;
 
                         for (int f = 0; f < folders.Length; f++)
@@ -98,7 +97,7 @@ namespace PackStudio.ViewModels
 
                             var folder = folders[f];
 
-                            if(f == folders.Length - 1)
+                            if (f == folders.Length - 1)
                             {
                                 currentNode.Add(new PackedFileItem(folder, i, this));
                                 break;
@@ -107,18 +106,18 @@ namespace PackStudio.ViewModels
                             DirectoryItem? selected = null;
                             foreach (var node in currentNode)
                             {
-                                if(node.name == folder && node is DirectoryItem dir)
+                                if (node.name == folder && node is DirectoryItem dir)
                                 {
                                     selected = dir;
                                     currentNode = dir.SubNodes;
                                     break;
                                 }
                             }
-                            if(selected == null)
+                            if (selected == null)
                             {
                                 selected = new DirectoryItem(folder);
                                 currentNode.Add(selected);
-                               
+
                             }
 
                             currentNode = selected.SubNodes;

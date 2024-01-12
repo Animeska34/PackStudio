@@ -1,11 +1,9 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.Platform.Storage;
-using PackStudio.ViewModels;
 using PackStudio.Items;
 using PackStudio.Operations;
-using System;
+using PackStudio.ViewModels;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -54,7 +52,7 @@ public partial class MainWindow : Window
 
     public static void Import(string path)
     {
-        FileInfo info = new FileInfo(path);
+        FileInfo info = new(path);
 
         if (FileTypes.IsPackage(path))
         {
@@ -65,10 +63,12 @@ public partial class MainWindow : Window
             };
             context.window = pv;
             pv.Show();
-        } else if (FileTypes.IsProject(path))
+        }
+        else if (FileTypes.IsProject(path))
         {
 
-        } else if (info.Attributes.HasFlag(FileAttributes.Directory))
+        }
+        else if (info.Attributes.HasFlag(FileAttributes.Directory))
         {
             ctx.AddPackage(path);
             //window.DataContext.
@@ -81,19 +81,19 @@ public partial class MainWindow : Window
         Debug.WriteLine("Dropping " + e + " " + sender + " " + e.Source + " " + e.Data);
 
         var data = e.Data;
-        if(data != null ) 
+        if (data != null)
         {
             var files = data.GetFiles();
 
-            if(files != null)
+            if (files != null)
             {
-                 foreach (var file in files)
+                foreach (var file in files)
                 {
                     string path = file.Path.LocalPath;
                     Import(path);
                 }
             }
- 
+
         }
     }
 

@@ -14,13 +14,50 @@
         Icon="/Assets/avalonia-logo.ico"
         x:DataType="vm:PreviewViewModel"
 		Title="{Binding Title}"
+		TransparencyBackgroundFallback="Gray"
 		TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
 		ExtendClientAreaToDecorationsHint="False"
 		WindowStartupLocation="CenterOwner"
 		x:CompileBindings="True"
 		>
-	<views:PreviewView />
+	<Panel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.1" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		<DockPanel>
+
+			<Grid DockPanel.Dock="Bottom" Height="30" ColumnDefinitions="* *" HorizontalAlignment="Stretch">
+
+				<Button Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding Extract}">
+					<TextBlock HorizontalAlignment="Center">Extract</TextBlock>
+				</Button>
+				<Button Grid.Column="1" HorizontalAlignment="Stretch" Command="{Binding ExtractTo}">
+					<TextBlock HorizontalAlignment="Center">Extract to</TextBlock>
+				</Button>
+			</Grid>
+
+			<TreeView DockPanel.Dock="Top"
+					  Name="Preview"
+					  ItemsSource="{Binding Nodes}"
+					  >
+				<TreeView.ItemTemplate>
+					<TreeDataTemplate ItemsSource="{Binding SubNodes}" >
+						<Panel>
+							<CheckBox IsEnabled="{Binding enabled}"  IsChecked="{Binding selected}"/>
+							<TextBlock Margin="30 0 0 0" Text="{Binding title}" VerticalAlignment="Center"/>
+						</Panel>
+					</TreeDataTemplate>
+				</TreeView.ItemTemplate>
+			</TreeView>
+		</DockPanel>
+	</Panel>
 	
 	
 </Window>

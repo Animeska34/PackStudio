@@ -74,7 +74,7 @@ namespace PackStudio.Items
             bool allTrue = true;
             bool allFalse = true;
 
-            int ts = 0, fs = 0; 
+            int ts = 0, fs = 0;
 
             foreach (var item in SubNodes)
             {
@@ -97,7 +97,7 @@ namespace PackStudio.Items
                 if (!allTrue && !allFalse)
                     break;
             }
-    
+
             if (allTrue)
                 m_selected = true;
             else if (allFalse)
@@ -116,7 +116,7 @@ namespace PackStudio.Items
 
         public DirectoryItem(string name, string path)
         {
-            
+
             DirectoryInfo dir = new(path);
             this.name = name;
 
@@ -124,7 +124,7 @@ namespace PackStudio.Items
 
             foreach (var subDir in dirs)
             {
-                if(!subDir.Attributes.HasFlag(FileAttributes.Hidden) && !subDir.Attributes.HasFlag(FileAttributes.System))
+                if (!subDir.Attributes.HasFlag(FileAttributes.Hidden) && !subDir.Attributes.HasFlag(FileAttributes.System))
                     SubNodes.Add(new DirectoryItem(subDir.Name, subDir.FullName));
             }
             var files = dir.GetFiles();

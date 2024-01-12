@@ -1,5 +1,4 @@
-﻿using Avalonia.Controls.Chrome;
-using Avalonia.Threading;
+﻿using Avalonia.Threading;
 using Pack.V2;
 using PackStudio.Views;
 using System;
@@ -59,10 +58,10 @@ namespace PackStudio.Operations
                     AnalyzeDirectory(subDir);
             }
         }
-        
+
         private static void OnPackFileStatic(UInt64 index, object o)
         {
-            ((PackOperation) o).OnPackFile(index);
+            ((PackOperation)o).OnPackFile(index);
         }
 
         private void OnPackFile(UInt64 index)
@@ -100,8 +99,6 @@ namespace PackStudio.Operations
                 ctx.Text = $"({step}/{packages.Count * 2 + 3}) Packing: {Path.GetFileName(path)}";
                 ctx.Value = step;
                 step++;
-
-                Int32 interation = 0;
 
                 /*
                 ctx.Maximum = 1000;

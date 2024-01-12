@@ -1,5 +1,5 @@
-﻿using PackStudio.Views;
-using PackStudio.ViewModels;
+﻿using PackStudio.ViewModels;
+using PackStudio.Views;
 
 namespace PackStudio.Operations
 {

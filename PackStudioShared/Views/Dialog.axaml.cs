@@ -16,7 +16,7 @@ namespace PackStudio.Views
         //public event Action onClosed;
         public static Dialog Show(string text, Window caller, string title = "Message")
         {
-            Dialog dialog = new Dialog(text, title);
+            Dialog dialog = new(text, title);
             dialog.ShowDialog(caller);
             return dialog;
         }
