@@ -19,6 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PackStudioShared\PackStudioShared.csproj" />
+    <ProjectReference Include="..\PackStudioShared\PackStudio.csproj" />
   </ItemGroup>
 </Project>

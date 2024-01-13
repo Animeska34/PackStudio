@@ -2,7 +2,8 @@
 {
     public class DialogViewModel
     {
-        public string Title { get; set; }
-        public string Message { get; set; }
+        public string title { get; set; } = "Message";
+        public string message { get; set; } = "DialogMessage";
+        public string color { get; set; } = "Black";
     }
 }

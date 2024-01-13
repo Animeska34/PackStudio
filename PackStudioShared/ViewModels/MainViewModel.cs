@@ -1,7 +1,8 @@
-﻿using PackStudio.Items;
+﻿using Microsoft.VisualBasic;
+using PackStudio.Items;
 using PackStudio.Views;
+using PackStudioShared.Views;
 using ReactiveUI;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -12,8 +13,6 @@ namespace PackStudio.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    public string Greeting => "Welcome to Avalonia!";
-
     private PackageItem m_SelectedPackages;
     public PackageItem SelectedPackages
     {
@@ -50,16 +49,26 @@ public class MainViewModel : ViewModelBase
     {
         if (SelectedPackages == null)
         {
-            Dialog.Show("No directory selected", MainWindow.window, "Error");
+            Dialog.Show("No directory selected", MainWindow.window, "Error", "Red");
             return;
         }
-        List<string> packages = new();
-        packages.Add(SelectedPackages.path);
+        List<string> packages = [SelectedPackages.path];
         MainWindow.Build(packages, "");
     });
 
     public ICommand About => ReactiveCommand.Create(() =>
     {
+    });
+
+    public ICommand Quit => ReactiveCommand.Create(() =>
+    {
+        MainWindow.window.Close();
+    });
+    public ICommand OpenPreferences => ReactiveCommand.Create(() =>
+    {
+        ProjectPreferencesViewModel ctx = new();
+        ProjectPreferences wnd = new() { DataContext = ctx };
+        wnd.Show();
     });
     public ICommand Help => ReactiveCommand.Create(() =>
     {
@@ -72,6 +81,11 @@ public class MainViewModel : ViewModelBase
     public ICommand OpenCommand => ReactiveCommand.Create(() =>
     {
         MainWindow.OpenFile();
+    });
+
+    public ICommand Reindex => ReactiveCommand.Create(() =>
+    {
+        LoadHierarhy(SelectedPackages);
     });
 
 

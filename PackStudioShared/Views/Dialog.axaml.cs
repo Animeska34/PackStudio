@@ -14,18 +14,18 @@ namespace PackStudio.Views
         }
 
         //public event Action onClosed;
-        public static Dialog Show(string text, Window caller, string title = "Message")
+        public static Dialog Show(string text, Window caller, string title = "Message", string color = "Black")
         {
-            Dialog dialog = new(text, title);
+            Dialog dialog = new(text, title, string.IsNullOrEmpty(color) ? "Black" : color);
             dialog.ShowDialog(caller);
             return dialog;
         }
 
-        public Dialog(string text, string title = "Message") : this()
+        public Dialog(string text, string title = "Message", string color = "Black") : this()
         {
             var model = new DialogViewModel();
-            model.Title = title;
-            model.Message = text;
+            model.title = title;
+            model.message = text;
             DataContext = model;
         }
 

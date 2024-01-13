@@ -40,6 +40,11 @@ public partial class MainWindow : Window
                 }
             });
 
+            foreach (var item in items)
+            {
+                Import(item.Path.LocalPath);
+            }
+
         }
     }
 

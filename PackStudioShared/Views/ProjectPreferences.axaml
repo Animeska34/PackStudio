@@ -2,24 +2,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:PackStudio.ViewModels"
-
-		Width="200"
-		Height="100"
-		CanResize="False"
-		
-		WindowStartupLocation="CenterOwner"
-        x:Class="PackStudio.Views.Dialog"
-		x:DataType="vm:DialogViewModel"
-        Title="{Binding title}"
+        xmlns:vm="using:PackStudio.ViewModels"
+		xmlns:views="clr-namespace:PackStudio.Views"
+		x:DataType="vm:ProjectPreferencesViewModel"
+		x:Class="PackStudioShared.Views.ProjectPreferences"
+		Width="500"
+		Height="400"
+		TransparencyBackgroundFallback="Gray"
 		TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
-		>
+		ExtendClientAreaToDecorationsHint="False"
+		WindowStartupLocation="CenterOwner"
+        Title="ProjectPreferences">
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-		<vm:DialogViewModel />
+		<vm:ProjectPreferencesViewModel />
 	</Design.DataContext>
+
 	<Panel>
 		<ExperimentalAcrylicBorder IsHitTestVisible="False">
 			<ExperimentalAcrylicBorder.Material>
@@ -30,16 +30,12 @@
 					MaterialOpacity="0.1" />
 			</ExperimentalAcrylicBorder.Material>
 		</ExperimentalAcrylicBorder>
-		<DockPanel Margin="15">
-			
-			<Panel DockPanel.Dock="Bottom" Height="30">
-				<!--
-				<Button Content="Confirm" />
-				-->
-			</Panel>
-			
-			<TextBlock DockPanel.Dock="Top" Text="{Binding message}">
-			</TextBlock>
-		</DockPanel>
+		
+		
+		<Slider Margin="100 0 100 0" />
+		<TextBox Text="Test" Height="25"/>
+		<TextBlock Text="Test" />
+		
+		
 	</Panel>
 </Window>

@@ -1,0 +1,3 @@
+[submodule "ThirdParty/pack"]
+	path = ThirdParty/pack
+	url = https://github.com/Animeska34/pack

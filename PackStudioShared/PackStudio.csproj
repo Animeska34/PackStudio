@@ -11,6 +11,16 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
+  
+  <ItemGroup>
+    <Compile Include="..\ThirdParty\pack\wrappers\cs\Common.cs" Link="Pack\Common.cs" />
+    <Compile Include="..\ThirdParty\pack\wrappers\cs\PackHeader.cs" Link="Pack\PackHeader.cs" />
+    <Compile Include="..\ThirdParty\pack\wrappers\cs\PackItemHeader.cs" Link="Pack\PackItemHeader.cs" />
+    <Compile Include="..\ThirdParty\pack\wrappers\cs\PackReader.cs" Link="Pack\PackReader.cs" />
+    <Compile Include="..\ThirdParty\pack\wrappers\cs\PackResult.cs" Link="Pack\PackResult.cs" />
+    <Compile Include="..\ThirdParty\pack\wrappers\cs\PackWriter.cs" Link="Pack\PackWriter.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />

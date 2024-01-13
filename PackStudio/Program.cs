@@ -1,8 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
+using PackStudio;
 using System;
 
-namespace PackStudio;
+namespace PackStudioLauncher;
 
 class Program
 {

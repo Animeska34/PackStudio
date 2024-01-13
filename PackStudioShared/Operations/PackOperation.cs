@@ -1,5 +1,5 @@
 ﻿using Avalonia.Threading;
-using Pack.V2;
+using Pack;
 using PackStudio.Views;
 using System;
 using System.Collections.Generic;
@@ -100,45 +100,17 @@ namespace PackStudio.Operations
                 ctx.Value = step;
                 step++;
 
-                /*
-                ctx.Maximum = 1000;
-                while (true)
-                {
-                    //SetValue(interation);
-                    //SetText(interation.ToString());
-
-                    ctx.Value = interation;
-                    ctx.Text = interation.ToString();
-
-                    //Thread.Sleep(10);
-                    interation++;
-                }
-                */
-
-
-                /*
-                if(excluded.Count > 0)
-                {
-                    string msg = "Following assets was excluded from build: \n";
-                    foreach (var item in excluded)
-                    {
-                        msg += item + "\n";
-                    }
-                    Dispatcher.UIThread.Invoke(async () => { Error(msg, "Warning"); });
-                }
-                */
-
                 var count = assets.Count / 2;
                 ctx.Value = 0;
                 ctx.Maximum = count;
                 ctx.Text = "Starting packing: " + path;
                 paths = assets.ToArray();
-                var result = PackWriter.PackFiles(path + ".pak", paths, 1f, false, OnPackFileStatic, this);
+                var result = PackWriter.PackFiles(path + ".pack", paths, 0.1f, false, OnPackFileStatic, this);
 
                 Debug.WriteLine("Pack operation complete: " + result.ToString());
                 if (result != PackResult.Success)
                 {
-                    Dispatcher.UIThread.Invoke(async () => { Error(result.ToString()); });
+                    Dispatcher.UIThread.Invoke(() => { Error(result.ToString()); });
                     return;
                 }
                 else

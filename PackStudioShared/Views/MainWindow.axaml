@@ -41,13 +41,14 @@
 					<MenuItem Header="Save"/>
 					<MenuItem Header="Save as"/>
 					<Separator/>
-					<MenuItem Header="Exit"/>
+					<MenuItem Header="Project preferences" Command="{Binding OpenPreferences}"/>
+					<MenuItem Header="Exit"  Command="{Binding Quit}"/>
 				</MenuItem>
 				<MenuItem Header="Edit">
 					<MenuItem Header="Copy"/>
 					<MenuItem Header="Paste"/>
 					<MenuItem Header="Rename"/>
-					<MenuItem Header="Re-index"/>
+					<MenuItem Header="Reindex" Command="{Binding Reindex}"/>
 				</MenuItem>
 				<MenuItem Header="Build">
 					<MenuItem Header="Build project" Command="{Binding BuildAll}"></MenuItem>

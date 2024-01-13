@@ -1,40 +1,63 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using PackStudio.Importers;
+using PackStudio.Items;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
-using System.Xml;
-using System.Xml.XPath;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PackStudio
 {
-    public static class PSProj
+    public class PSProj
     {
-        static XmlDocument doc;
-        static XPathNavigator navigator;
-        static string path;
+        [JsonInclude]
+        private string m_path;
 
-        public static void Load(string project)
+        public Action projectLoaded;
+        public ProjectImporter config { get; private set; }
+        public string path => m_path;
+        public string assets => Path.Combine(path, "/Assets/");
+        public string cache => Path.Combine(path, "/.Cache/");
+
+        public void Load(string project)
         {
-            doc = new();
-            doc.LoadXml(File.ReadAllText(project));
-            navigator = doc.CreateNavigator();
+            config =  JsonSerializer.Deserialize<ProjectImporter>(File.ReadAllText(project));
+            projectLoaded.Invoke();
+        }
+        public void Save()
+        {
+            config.Save();
         }
 
-        public static List<string> GetLoadedPackages()
+        public void SaveAs()
         {
+
+        }
+        public List<PackageItem> GetPackages()
+        {
+            if ( string.IsNullOrEmpty(path))
+                return [];
             List<string> ret = new();
 
-            if (doc == null)
-            {
-                Debug.WriteLine("Project not loaded");
-                return ret;
-            }
-            var nodes = navigator.Select("//Packages/");
-            foreach (XmlNode node in nodes)
-            {
+            var assets = Path.Combine(path + "/Assets/");
+            if(!Path.Exists(assets))
+                Directory.CreateDirectory(assets);
+            DirectoryInfo assetDir = new DirectoryInfo(assets);
+            
+            var dirs = assetDir.GetDirectories();
+            List<PackageImporter> importers;
 
+            foreach (var dir in dirs)
+            {
+                //dir.FullName
             }
-            return ret;
+
+            return null;
         }
+    }
+
+    internal class PackageImporter
+    {
     }
 }
