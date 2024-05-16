@@ -68,6 +68,7 @@ public class MainViewModel : ViewModelBase
     {
         ProjectPreferencesViewModel ctx = new();
         ProjectPreferences wnd = new() { DataContext = ctx };
+        
         wnd.Show();
     });
     public ICommand Help => ReactiveCommand.Create(() =>
