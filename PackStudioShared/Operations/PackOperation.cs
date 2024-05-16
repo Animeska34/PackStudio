@@ -105,7 +105,7 @@ namespace PackStudio.Operations
                 ctx.Maximum = count;
                 ctx.Text = "Starting packing: " + path;
                 paths = assets.ToArray();
-                var result = PackWriter.PackFiles(path + ".pack", paths, 0.1f, false, OnPackFileStatic, this);
+                var result = PackWriter.PackFiles(path + ".pack", paths, 0.1f, false, OnPackFileStatic);
 
                 Debug.WriteLine("Pack operation complete: " + result.ToString());
                 if (result != PackResult.Success)
