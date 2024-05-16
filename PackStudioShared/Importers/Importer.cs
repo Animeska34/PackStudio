@@ -39,7 +39,7 @@ namespace PackStudio.Importers
             if (!cacheable)
                 return;
             cached = DateTime.UtcNow.Ticks.ToString();
-            Cache(Path.Combine(PSProj.cache, guid));
+            Cache(Path.Combine(PSProj.library, guid));
         }
 
         public void Update()

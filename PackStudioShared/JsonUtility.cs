@@ -1,5 +1,4 @@
 ﻿using PackStudio.Importers;
-using PackStudioShared.Importers;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -19,7 +19,9 @@ CALL xcopy /s /y "../.BuildResources/Linux" "../Build/Linux"
 CALL powershell -Command "&{Compress-Archive -Path ../Build/Linux/PackStudio -DestinationPath ../Build/PackStudio_linux-x64@%version%.zip}"
 
 ECHO Running MacOS Build
+
 CALL dotnet publish -c Release --sc true -r osx-arm64 -o ../Build/MacOS/PackStudio.app/Contents/MacOS/
-CALL xcopy /s /y "../.BuildResources/MacOS/PackStudio.app" "../Build/MacOS"
+CALL xcopy /s /y "../.BuildResources/MacOS" "../Build/MacOS"
 CALL powershell -Command "&{Compress-Archive -Path ../Build/MacOS/PackStudio.app -DestinationPath ../Build/PackStudio_osx-arm64@%version%.zip}"
+
 ECHO Done

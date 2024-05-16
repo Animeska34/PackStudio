@@ -5,6 +5,7 @@ namespace PackStudio.Importers
 {
     public class ProjectImporter
     {
+        
         public string projectName = "Project.psproj";
         public float compression = 0.1f;
         public string outputPath = "Build/";
@@ -20,11 +21,12 @@ namespace PackStudio.Importers
 
         public virtual void Save()
         {
-            var meta = JsonSerializer.Serialize(this, GetType());
-            File.WriteAllText(fullOutputPath + ".psproj", meta);
+            //var meta = JsonSerializer.Serialize(this, GetType());
+            //File.WriteAllText(fullOutputPath + ".psproj", meta);
         }
 
         private ProjectImporter() { }
+        
     }
 }
  

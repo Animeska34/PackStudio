@@ -11,26 +11,27 @@ namespace PackStudio
 {
     public class PSProj
     {
+        private static PSProj current;
         [JsonInclude]
         private string m_path;
 
-        public Action projectLoaded;
-        public ProjectImporter config { get; private set; }
-        public string path => m_path;
-        public string assets => Path.Combine(path, "/Assets/");
-        public string cache => Path.Combine(path, "/.Cache/");
+        public static Action projectLoaded;
+        public static ProjectImporter config { get; private set; }
+        public static string path => current.m_path;
+        public static string assets => Path.Combine(path, "/Assets/");
+        public static string library => Path.Combine(path, "/Library/");
 
-        public void Load(string project)
+        public static void Load(string project)
         {
-            config =  JsonSerializer.Deserialize<ProjectImporter>(File.ReadAllText(project));
+            config = JsonSerializer.Deserialize<ProjectImporter>(File.ReadAllText(project));
             projectLoaded.Invoke();
         }
-        public void Save()
+        public static void Save()
         {
             config.Save();
         }
 
-        public void SaveAs()
+        public static void SaveAs()
         {
 
         }
@@ -55,7 +56,14 @@ namespace PackStudio
 
             return null;
         }
+
+        private PSProj()
+        {
+            current = this;
+        }
     }
+
+
 
     internal class PackageImporter
     {
